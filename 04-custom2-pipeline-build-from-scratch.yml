@@ -25,7 +25,7 @@ stages:
       - task: Docker@2
         inputs:
           containerRegistry: 'manual-aksdevopsacr-svc'
-          repository: 'acr-k8s-image'
+          repository: 'neo2sumitghosh/acr-k8s-image'
           command: 'buildAndPush'
           Dockerfile: '**/Dockerfile'
           tags: |
