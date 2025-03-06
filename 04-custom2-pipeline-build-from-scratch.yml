@@ -10,7 +10,7 @@ trigger:
 
 #variables 
 variables:
-  tags: '$(Build.BuildId)'
+  tag: '$(Build.BuildId)'
 
 stages:
   - stage: Build 
@@ -25,7 +25,7 @@ stages:
       - task: Docker@2
         inputs:
           containerRegistry: 'manual-aksdevopsacr-svc'
-          repository: 'custom2aksnginxapp1'
+          repository: 'acr-k8s-image'
           command: 'buildAndPush'
           Dockerfile: '**/Dockerfile'
           tags: |
