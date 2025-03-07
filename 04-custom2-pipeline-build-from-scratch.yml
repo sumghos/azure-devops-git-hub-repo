@@ -20,8 +20,33 @@ stages:
       displayName: Build job
       pool:
         vmImage: 'ubuntu-latest'
+
       steps:
-      # Task-1: Build Docker Image and push to Azure Container Registry ACR
+      # include terrafrom module to create cluster
+        - task: TerraformInstaller@1
+            displayName: 'Install Terraform'
+            inputs:
+              terraformVersion: 'latest'  # Specify the required version
+
+        - script: |
+            terraform init
+            displayName: 'Terraform Init'
+          working_
+
+        - script: |
+            terraform validate
+            displayName: 'Terraform Validate'
+
+        - script: |
+            terraform plan -out=tfplan
+            displayName: 'Terraform Plan'
+
+        - script: |
+            terraform apply -auto-approve tfplan
+            displayName: 'Terraform Apply'
+
+
+          # Task-1: Build Docker Image and push to Azure Container Registry ACR
       - task: Docker@2
         inputs:
           containerRegistry: 'manual-aksdevopsacr-svc'
