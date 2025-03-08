@@ -31,7 +31,7 @@ stages:
       - script: |
           terraform init
         displayName: 'Terraform Init'
-        workingDirectory: '$(Pipeline.Workspace)/Azure_Aks_module'
+        workingDirectory: '$(Pipeline.Workspace)/s/Azure_Aks_module'
 
       - script: |
           terraform validate
