@@ -12,7 +12,7 @@ variable "location" {
 variable "node_count" {
   type = number
   description = "This defines the number of nodes in the Aks cluster"
-  default = 2
+  default = 1
 }
 
 variable "username" {
