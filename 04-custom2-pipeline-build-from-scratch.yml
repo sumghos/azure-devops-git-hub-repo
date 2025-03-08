@@ -36,17 +36,17 @@ stages:
       - script: |
           terraform validate
         displayName: 'Terraform Validate'
-        workingDirectory: '$(Pipeline.Workspace)/Azure_Aks_module'
+        workingDirectory: '$(Pipeline.Workspace)/s/Azure_Aks_module'
 
       - script: |
           terraform plan -out=tfplan
         displayName: 'Terraform Plan'
-        workingDirectory: '$(Pipeline.Workspace)/Azure_Aks_module'
+        workingDirectory: '$(Pipeline.Workspace)/s/Azure_Aks_module'
 
       - script: |
           terraform apply -auto-approve tfplan
         displayName: 'Terraform Apply'
-        workingDirectory: '$(Pipeline.Workspace)/Azure_Aks_module'
+        workingDirectory: '$(Pipeline.Workspace)/s/Azure_Aks_module'
 
           # Task-1: Build Docker Image and push to Azure Container Registry ACR
       - task: Docker@2
